@@ -1,9 +1,17 @@
 name: Build templates
 on: push
 jobs:
-  first-job:
-    name: Build
+  build-templates:
+    name: Build Templates
     runs-on: ubuntu-latest
     steps:
-    - name: Print a greeting
-      run: echo Hola from our first workflow!
+      - name: Check-out the repo under $GITHUB_WORKSPACE
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: build templates, now
+        run: python build.py
