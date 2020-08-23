@@ -20,3 +20,5 @@ for dir in dirs:
     .replace('$HTML', html)
   )
   index_file.close()
+  print('- ' + project_name)
+print(str(len(dirs))+' projects processed')
