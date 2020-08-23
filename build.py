@@ -1,1 +1,1 @@
-print("HOLAAAAAAA")
+print($GITHUB_WORKSPACE)
