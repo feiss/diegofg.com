@@ -1,0 +1,7 @@
+name: Build templates
+  first-job:                           
+    name: Build                           
+    runs-on: ubuntu-latest                           
+    steps:                           
+    - name: Print a greeting                             
+      run: echo Hola from our first workflow!

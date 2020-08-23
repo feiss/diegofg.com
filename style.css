@@ -95,12 +95,15 @@ h1, nav{
 
 h1{
   margin-top: 55px;
+  line-height: 2rem;
 }
+
 h3{
   font-size: 18px;
   font-weight: 800;
   margin-top: 50px;
 }
+
 nav{
   margin-bottom: 55px;
 }
@@ -123,6 +126,9 @@ nav>a.active{
   margin: 40px auto;
 }
 
+#summary nav a{
+  font-weight: 400;
+}
 
 #aboutme{
   width: 430px;
@@ -151,17 +157,24 @@ li{
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: start;
-  align-items: auto;
-  align-content: start;
   margin: 0 auto;
 }
 
 #projects a{
   flex: 0 0 auto;
-  margin: 15px;
+  padding: 15px;
   border: none;
   transition: transform 100ms;
+  width: calc(100% / 3);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  background-position: center;
+  background-clip: content-box;
+}
+
+#projects a img{
+  width: 100%;
 }
 
 #projects a:hover{
@@ -176,6 +189,7 @@ li{
   margin-top: 110px;
   opacity: 0;
 }
+
 #projects a:hover .label{
   opacity: 1;
 }
@@ -184,6 +198,13 @@ li{
   text-align: center;
   margin: 2rem 0;
 }
+
+#project img{
+  width: 100%;
+  margin: 15px 0;
+}
+
+/* external links indicator */
 /*
 a[target]:after{
   content: url(res/ext.svg);
@@ -193,6 +214,16 @@ a[target]:after{
 
 @media only screen and (max-width: 1000px) {
   #main{
+    width: 100%;
+  }
+
+  #projects a{
+    width: calc(100% / 2);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #projects a{
     width: 100%;
   }
 }
