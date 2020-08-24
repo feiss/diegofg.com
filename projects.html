@@ -1,47 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <meta charset="utf-8">
   <title>Diego F. Goberna - Portfolio</title>
    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+<div id="all">
 
-<div id="main">
   <header></header>
-  <h1>DIEGO F. GOBERNA</h1>
-  <nav>
-    <a href="about.html">About me</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="projects.html" class="active">Projects</a>
-  </nav>
+  <div id="main">
+    <h1>DIEGO F. GOBERNA</h1>
+    <nav>
+      <a href="about.html">About me</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="projects.html" class="active">Projects</a>
+    </nav>
 
 
-  <div id="projects">
-    <a href="projects/hello-webxr" title="Hello WebXR!" style="background-image: url(projects/hello-webxr/thumb.jpg);"><img src="res/th.png"></a>
-    <a href="projects/hello-webxr" title="Hello WebXR!" style="background-image: url(projects/hello-webxr/thumb.jpg);"><img src="res/th.png"></a>
-    <a href="projects/hello-webxr" title="Hello WebXR!" style="background-image: url(projects/hello-webxr/thumb.jpg);"><img src="res/th.png"></a>
-    <a href="projects/hello-webxr" title="Hello WebXR!" style="background-image: url(projects/hello-webxr/thumb.jpg);"><img src="res/th.png"></a>
-    <a href="projects/hello-webxr" title="Hello WebXR!" style="background-image: url(projects/hello-webxr/thumb.jpg);"><img src="res/th.png"></a>
-    <a href="projects/hello-webxr" title="Hello WebXR!" style="background-image: url(projects/hello-webxr/thumb.jpg);"><img src="res/th.png"></a>
-    <a href="projects/hello-webxr" title="Hello WebXR!" style="background-image: url(projects/hello-webxr/thumb.jpg);"><img src="res/th.png"></a>
-    <a href="projects/hello-webxr" title="Hello WebXR!" style="background-image: url(projects/hello-webxr/thumb.jpg);"><img src="res/th.png"></a>
-    <a href="projects/hello-webxr" title="Hello WebXR!" style="background-image: url(projects/hello-webxr/thumb.jpg);"><img src="res/th.png"></a>
-    <a href="projects/hello-webxr" title="Hello WebXR!" style="background-image: url(projects/hello-webxr/thumb.jpg);"><img src="res/th.png"></a>
-    <a href="projects/hello-webxr" title="Hello WebXR!" style="background-image: url(projects/hello-webxr/thumb.jpg);"><img src="res/th.png"></a>
-    <a href="projects/hello-webxr" title="Hello WebXR!" style="background-image: url(projects/hello-webxr/thumb.jpg);"><img src="res/th.png"></a>
-    <a href="projects/hello-webxr" title="Hello WebXR!" style="background-image: url(projects/hello-webxr/thumb.jpg);"><img src="res/th.png"></a>
+    <div id="projects">
+      <a title="Moonrider" href="projects/moonrider" style="background-image: url(projects/moonrider/thumb.jpg)"><img src="res/th.png"></a>
+      <a title="A-Painter" href="projects/a-painter" style="background-image: url(projects/a-painter/thumb.jpg)"><img src="res/th.png"></a>
+      <a href="projects/hello-webxr" title="Hello WebXR!" style="background-image: url(projects/hello-webxr/thumb.jpg);"><img src="res/th.png"></a>
+      <a href="projects/foxr-run" title="Foxr Run!" style="background-image: url(projects/foxr-run/thumb.jpg);"><img src="res/th.png"></a>
+      <a title="BeatSaver Viewer" href="projects/beatsaver-viewer" style="background-image: url(projects/beatsaver-viewer/thumb.jpg)"><img src="res/th.png"></a>
+      <a href="projects/jumpy-balls" title="Jumpy Balls" style="background-image: url(projects/jumpy-balls/thumb.jpg);"><img src="res/th.png"></a>
+      <a href="projects/blender-addons" title="Blender Add-ons" style="background-image: url(projects/blender-addons/thumb.jpg);"><img src="res/th.png"></a>
+      <a href="projects/fxr" title="Firefox Reality" style="background-image: url(projects/fxr/thumb.jpg);"><img src="res/th.png"></a>
+      <a title="A Saturday Night" href="projects/a-saturday-night" style="background-image: url(projects/a-saturday-night/thumb.jpg)"><img src="res/th.png"></a>
+      <a title="A-Blast" href="projects/a-blast" style="background-image: url(projects/a-blast/thumb.jpg)"><img src="res/th.png"></a>
+      <a title="Nightsky" href="projects/nightsky" style="background-image: url(projects/nightsky/thumb.jpg)"><img src="res/th.png"></a>
+      <a title="Supercraft" href="projects/supercraft" style="background-image: url(projects/supercraft/thumb.jpg)"><img src="res/th.png"></a>
+      <a title="Super Says" href="projects/supersays" style="background-image: url(projects/supersays/thumb.jpg)"><img src="res/th.png"></a>
+
+<!--      <a title="A-Frame Components" href="projects/a-frame" style="background-image: url(projects/a-frame/thumb.jpg)"><img src="res/th.png"></a>
+-->
+
+    </div>
+
+
+    <script type="text/javascript">
+      var thumbs = document.querySelectorAll('#projects a');
+      for (var i = 0; i < thumbs.length; i++) {
+        var label = document.createElement('span');
+        label.className = 'label';
+        label.innerHTML = thumbs[i].title;
+        thumbs[i].prepend(label);
+      }
+    </script>
   </div>
-
-
-  <footer></footer>
-  <script type="text/javascript">
-    var thumbs = document.querySelectorAll('#projects a');
-    for (var i = 0; i < thumbs.length; i++) {
-      var label = document.createElement('span');
-      label.className = 'label';
-      label.innerHTML = thumbs[i].title;
-      thumbs[i].prepend(label);
-    }
-  </script>
+<footer></footer>
 </div>
 </body>
 </html>
