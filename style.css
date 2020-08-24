@@ -233,7 +233,7 @@ a[target]:after{
 */
 
 @media only screen and (max-width: 1000px) {
-  #all{
+  #all, #aboutme{
     width: 100%;
   }
 
