@@ -207,6 +207,17 @@ li{
   margin: 15px 0;
 }
 
+#project .w50{
+  width: 50%;
+}
+#project .w33{
+  width: 32%;
+}
+#project .w25{
+  width: 24%;
+}
+
+
 .youtube{
   position: relative;
   overflow: hidden;
@@ -214,6 +225,14 @@ li{
   margin: 15px 0;
   padding-top: 56.25%;
 }
+
+.vimeo{
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin: 15px 0;
+}
+
 .youtube iframe{
   position: absolute;
   top: 0;
