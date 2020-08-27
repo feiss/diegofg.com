@@ -50,7 +50,7 @@ body{
 ::selection { background: var(--fg); color: var(--bg); }
 
 img {
-  vertical-align: bottom;
+  vertical-align: top;
   -ms-interpolation-mode: bicubic;
 }
 
