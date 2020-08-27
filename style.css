@@ -23,6 +23,7 @@
   --fg: #333;
   --fg2: #1C8198;
   --bg: #F2EFE6;
+  --bg2: #DEDAD1;
 }
 
 * {
@@ -102,7 +103,7 @@ h1{
 }
 
 h3{
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 800;
   margin-top: 50px;
 }
@@ -207,14 +208,22 @@ li{
   margin: 15px 0;
 }
 
+#project .w66{
+  width: 66%;
+  display: inline-block;
+}
+
 #project .w50{
-  width: 50%;
+  width: 49%;
+  display: inline-block;
 }
 #project .w33{
-  width: 32%;
+  width: 32.5%;
+  display: inline-block;
 }
 #project .w25{
   width: 24%;
+  display: inline-block;
 }
 
 
@@ -251,6 +260,22 @@ a[target]:after{
 }
 */
 
+
+dl{
+  display: inline;
+  font-weight: 100;
+  margin-left: 1rem;
+}
+
+dt{
+  display: inline;
+  font-size: 1rem;
+  background: var(--bg2);
+  padding: 0.1rem 0.5rem;
+  margin-right: 0.6rem;
+  border-radius: 0.4rem;
+}
+
 @media only screen and (max-width: 1000px) {
   #all, #aboutme{
     width: 100%;
@@ -285,5 +310,13 @@ a[target]:after{
 
   h1{
     font-size: 2.5rem;
+  }
+
+  video{
+    width: 100%;
+  }
+
+  #project .w66, #project .w50, #project .w33, #project .w25{
+    width: 100%;
   }
 }
