@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176592956-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-176592956-1');
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8">
+  <title>Diego F. Goberna - Portfolio</title>
+   <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="all">
+
+  <header></header>
+  <div id="main">
+    <h1>DIEGO F. GOBERNA</h1>
+    <nav>
+      <a href="about.html">About me</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="projects.html" class="active">Projects</a>
+    </nav>
+
+
+    <div id="projects">
+      $PROJECT_LIST
+        moonrider
+        a-painter
+        hello-webxr
+        supercraft
+        blender-addons
+        fxr
+        random-experiments
+        tools
+        pico8
+        a-saturday-night
+        jumpy-balls
+        foxr-run
+        a-blast
+        beatsaver-viewer
+        nightsky
+        supersays
+      $END_PROJECT_LIST
+    </div>
+
+
+    <script type="text/javascript">
+      var thumbs = document.querySelectorAll('#projects a');
+      for (var i = 0; i < thumbs.length; i++) {
+        var label = document.createElement('span');
+        label.className = 'label';
+        label.innerHTML = thumbs[i].title;
+        thumbs[i].prepend(label);
+      }
+    </script>
+  </div>
+<footer></footer>
+</div>
+</body>
+</html>
