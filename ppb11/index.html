@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPB II - Práctica 11</title>
+    <style>
+        html {
+            background: rgb(196, 196, 196);
+            font: 1.6rem sans-serif;
+            line-height: 1.4rem;
+        }
+
+        #all {
+            height: 95vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        #all * {
+            max-width: 40rem;
+        }
+
+        input {
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            outline: none;
+            background: #eee;
+            border: 1px solid #999;
+            border-radius: 4px;
+            text-align: center;
+            color: #4c4c4c;
+        }
+
+        button {
+            background: #d6d6d6;
+            border-radius: 4px;
+            margin: 1rem;
+            outline: none;
+            padding: 5px 22px;
+            border: 1px solid #999;
+            border-color: white gray gray white;
+            font-size: 0.7rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="all">
+        <p>Introduce tu nombre:</p>
+        <input id='subject_name'>
+        <button onclick="start()">OK</button>
+    </div>
+    <script>
+
+        let instructions1 = [
+            "<p>A continuación se te presentarán en el centro de la pantalla del ordenador cadenas de letras que son o no son palabras reales del castellano. Tu tarea consistirá en pulsar la letra \"m\" si piensas que se trata de una palabra o apretar la tecla \"z\" si piensas que se trata de una no-palabra. Deberás intentar contestar en cada ocasión lo más rápidamente posible, tratando al mismo tiempo de no cometer errores.</p><p>Pulsa cualquier tecla para comenzar</p>",
+            "Recuerda: \"m\" = palabra, \"z\" = no-palabra",
+            "Pulsa cualquier tecla para empezar",
+        ];
+        let instructions2 = [
+            "<p>Fin del entrenamiento, comienzo del experimento.</p><p>Pulsa una tecla para continuar</p>",
+            "Recuerda: \"m\" = palabra, \"z\" = no-palabra",
+            "Pulsa cualquier tecla para empezar",
+        ];
+
+        let training = [
+            'niño',
+            'apto',
+            'olmo',
+            'yidu',
+            'lahi',
+            'feci',
+            'luco',
+            'nuez',
+        ];
+
+        let pas = ['aedad', 'apelo', 'aamor', 'aarte', 'aacto', 'alado', 'ahijo', 'aniña', 'aazul', 'aolor', 'areal', 'aagua', 'adoña', 'azona', 'apena', 'abaja', 'acabo', 'aaire', 'apies', 'aalma', 'bviga', 'bbuey', 'bsana', 'bvilo', 'buvas', 'bceja', 'bateo', 'bsaga', 'bliso', 'blodo', 'bacre', 'bkilo', 'bsaña', 'bcrin', 'bcaño', 'bhipo', 'baval', 'bzoco', 'bclip', 'basma'];
+        let nps = ['1azal', '1blor', '1boen', '1cuen', '1elte', '1eyer', '1frao', '1grus', '1hine', '1hore', '1icho', '1jele', '1odea', '1ofra', '1otri', '1pear', '1piol', '1plao', '1puis', '1trea', '2afre', '2clun', '2diol', '2elce', '2enoa', '2erla', '2fuen', '2igro', '2ijal', '2nozi', '2obon', '2odem', '2olco', '2olda', '2orzo', '2unal', '2urbo', '2urzo', '2voal', '2yuga'];
+        let words = [];
+        while (pas.length + nps.length > 0) {
+            if (Math.random() < 0.5 && pas.length > 0) {
+                const rnd = Math.floor(Math.random() * pas.length);
+                words.push(pas.splice(rnd, 1)[0]);
+            } else if (nps.length > 0) {
+                const rnd = Math.floor(Math.random() * nps.length);
+                words.push(nps.splice(rnd, 1)[0]);
+            }
+        }
+
+        $ = el => document.querySelector(el);
+        let screen = document.getElementById('all');
+        let timing = false;
+        let starttime = 0;
+        let trs = [];
+        let answers = [];
+
+        let intro_slide = 0;
+        let trial_slide = 0;
+
+        const prueba = location.hash == "#prueba";
+        const PAUSA_INSTR = prueba ? 1000 : 3000;
+        const PAUSA_PF = prueba ? 200 : 2000;
+
+        let subject_name = "resultado";
+
+        let block = 0;
+        let manual_skip = true;
+        let pf = true;
+        let keyblocked = false;
+
+        function start() {
+            subject_name = document.getElementById('subject_name').value.trim();
+            if (subject_name == "") subject_name = "resultado";
+            document.addEventListener("keydown", onkeydown);
+            document.addEventListener("keyup", onkeyup);
+            next();
+        }
+
+        function next() {
+            // primeras instrucciones
+            if (block == 0) {
+                timing = false;
+                screen.innerHTML = instructions1[intro_slide];
+                manual_skip = intro_slide != 1;
+                if (intro_slide == 1) {
+                    setTimeout(next, PAUSA_INSTR);
+                }
+                intro_slide++;
+                if (intro_slide >= instructions1.length) {
+                    block++;
+                }
+            }
+            // entrenamiento
+            else if (block == 1) {
+                if (pf) {
+                    screen.innerHTML = '+';
+                    manual_skip = false;
+                    pf = false;
+                    setTimeout(next, PAUSA_PF);
+                } else {
+                    screen.innerHTML = training[trial_slide];
+                    manual_skip = true;
+                    pf = true;
+                    timing = true;
+                    trial_slide++;
+                    if (trial_slide >= training.length) {
+                        intro_slide = 0;
+                        block++;
+                    }
+                }
+            }
+
+            // segundas instrucciones
+            else if (block == 2) {
+                timing = false;
+                screen.innerHTML = instructions2[intro_slide];
+                manual_skip = intro_slide != 1;
+                if (intro_slide == 1) {
+                    setTimeout(next, PAUSA_INSTR);
+                }
+                intro_slide++;
+                if (intro_slide >= instructions2.length) {
+                    trial_slide = 0;
+                    block++;
+                }
+            }
+
+            // trials
+            else if (block == 3) {
+                if (pf) {
+                    screen.innerHTML = '+';
+                    manual_skip = false;
+                    pf = false;
+                    setTimeout(next, PAUSA_PF);
+                } else {
+                    screen.innerHTML = words[trial_slide].substr(1);
+                    manual_skip = true;
+                    starttime = performance.now();
+                    pf = true;
+                    timing = true;
+                    trial_slide++;
+                    if (trial_slide >= words.length) {
+                        intro_slide = 0;
+                        block++;
+                    }
+                }
+            }
+
+            // fin
+            else if (block == 4) {
+                let data = get_download_data();
+                screen.innerHTML = "<p>Fin del experimento.</p>" +
+                    "<p><a href='" + data + "' download='prac11_" + subject_name + ".csv'>Descargar los resultados</a></p>";
+            }
+
+        }
+
+
+        function onkeydown(ev) {
+            if (keyblocked || !manual_skip) return;
+            if (timing) {
+                if (ev.key != 'm' && ev.key != 'z') return;
+
+                if (block == 3) {
+                    trs.push(Math.floor(performance.now() - starttime));
+                    answers.push(ev.key == 'm' ? 'pa' : 'np');
+                }
+            }
+            next()
+            keyblocked = true;
+        }
+
+        function onkeyup(ev) {
+            keyblocked = false;
+        }
+
+        function get_download_data() {
+            let csv = "Tipo de estímulo\tPalabra\tRespuesta\tRespuesta correcta\tEnsayo correcto / incorrecto\tTR\n";
+            const tipos = { 'a': 'pafa', 'b': 'pafb', '1': 'np1', '2': 'np2' };
+            for (w in words) {
+                const tipo = tipos[words[w][0]];
+                const ans = answers[w];
+                const corr = tipo.substr(0, 2);
+                const res = ans == corr ? "C" : "E";
+                csv += tipo + "\t" + words[w].substr(1) + "\t";
+                csv += ans + "\t" + corr + "\t" + res + "\t" + trs[w] + "\n";
+            }
+            return "data:text/csv;charset=utf-8," + encodeURIComponent(csv);
+        }
+    </script>
+</body>
+
+</html>
