@@ -82,15 +82,14 @@
 
         let pas = ['aedad', 'apelo', 'aamor', 'aarte', 'aacto', 'alado', 'ahijo', 'aniña', 'aazul', 'aolor', 'areal', 'aagua', 'adoña', 'azona', 'apena', 'abaja', 'acabo', 'aaire', 'apies', 'aalma', 'bviga', 'bbuey', 'bsana', 'bvilo', 'buvas', 'bceja', 'bateo', 'bsaga', 'bliso', 'blodo', 'bacre', 'bkilo', 'bsaña', 'bcrin', 'bcaño', 'bhipo', 'baval', 'bzoco', 'bclip', 'basma'];
         let nps = ['1azal', '1blor', '1boen', '1cuen', '1elte', '1eyer', '1frao', '1grus', '1hine', '1hore', '1icho', '1jele', '1odea', '1ofra', '1otri', '1pear', '1piol', '1plao', '1puis', '1trea', '2afre', '2clun', '2diol', '2elce', '2enoa', '2erla', '2fuen', '2igro', '2ijal', '2nozi', '2obon', '2odem', '2olco', '2olda', '2orzo', '2unal', '2urbo', '2urzo', '2voal', '2yuga'];
-        let words = [];
-        while (pas.length + nps.length > 0) {
-            if (Math.random() < 0.5 && pas.length > 0) {
-                const rnd = Math.floor(Math.random() * pas.length);
-                words.push(pas.splice(rnd, 1)[0]);
-            } else if (nps.length > 0) {
-                const rnd = Math.floor(Math.random() * nps.length);
-                words.push(nps.splice(rnd, 1)[0]);
-            }
+        let words = pas.concat(nps);
+
+        // shuffle
+        for (var i = words.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = words[i];
+            words[i] = words[j];
+            words[j] = temp;
         }
 
         $ = el => document.querySelector(el);
@@ -205,9 +204,9 @@
         function onkeydown(ev) {
             if (keyblocked || !manual_skip) return;
             if (timing) {
-                if (ev.key != 'm' && ev.key != 'z') return;
+                if (ev.key != 'm' && ev.key != 'z' && ev.key != 'M' && ev.key != 'Z') return;
 
-                if (block == 3) {
+                if (block >= 3 && answers.length < words.length) {
                     trs.push(Math.floor(performance.now() - starttime));
                     answers.push(ev.key == 'm' ? 'pa' : 'np');
                 }
