@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176592956-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-176592956-1');
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8">
+  <title>Diego F. Goberna - Portfolio</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <div id="all">
+
+    <header></header>
+    <div id="main">
+      <h1>DIEGO F. GOBERNA
+        <span>Technical Artist & Creative Developer</span>
+      </h1>
+      <nav>
+        <a href="/projects.html">Selected Works</a>
+        <a href="/about.html">About me</a>
+        <a href="/lab.html" class="active">Lab</a>
+        <a href="/archive.html">Archive</a>
+      </nav>
+
+
+      <div id="projects">
+        <a title="Random Experiments" href="lab/random-experiments" style="background-image: url(lab/random-experiments/thumb.jpg)"><img src="res/th.png"></a>
+<a title="House of Cards" href="lab/house-of-cards" style="background-image: url(lab/house-of-cards/thumb.jpg)"><img src="res/th.png"></a>
+<a title="Pico8" href="lab/pico8" style="background-image: url(lab/pico8/thumb.jpg)"><img src="res/th.png"></a>
+<a title="Tools" href="lab/tools" style="background-image: url(lab/tools/thumb.jpg)"><img src="res/th.png"></a>
+
+      </div>
+
+
+      <script type="text/javascript">
+        var thumbs = document.querySelectorAll('#projects a');
+        for (var i = 0; i < thumbs.length; i++) {
+          var label = document.createElement('span');
+          label.className = 'label';
+          label.innerHTML = thumbs[i].title;
+          thumbs[i].prepend(label);
+        }
+      </script>
+    </div>
+    <footer></footer>
+  </div>
+</body>
+
+</html>

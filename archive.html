@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176592956-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-176592956-1');
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8">
+  <title>Diego F. Goberna - Portfolio</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <div id="all">
+
+    <header></header>
+    <div id="main">
+      <h1>DIEGO F. GOBERNA
+        <span>Technical Artist & Creative Developer</span>
+      </h1>
+      <nav>
+        <a href="/projects.html">Selected Works</a>
+        <a href="/about.html">About me</a>
+        <a href="/lab.html">Lab</a>
+        <a href="/archive.html" class="active">Archive</a>
+      </nav>
+
+      <div id="projects">
+        <a title="A-Painter" href="archive/a-painter" style="background-image: url(archive/a-painter/thumb.jpg)"><img src="res/th.png"></a>
+<a title="Blender Add-ons" href="archive/blender-addons" style="background-image: url(archive/blender-addons/thumb.jpg)"><img src="res/th.png"></a>
+<a title="Firefox Reality" href="archive/fxr" style="background-image: url(archive/fxr/thumb.jpg)"><img src="res/th.png"></a>
+<a title="A Saturday Night" href="archive/a-saturday-night" style="background-image: url(archive/a-saturday-night/thumb.jpg)"><img src="res/th.png"></a>
+<a title="Jumpy Balls" href="archive/jumpy-balls" style="background-image: url(archive/jumpy-balls/thumb.jpg)"><img src="res/th.png"></a>
+<a title="Foxr Run!" href="archive/foxr-run" style="background-image: url(archive/foxr-run/thumb.jpg)"><img src="res/th.png"></a>
+<a title="A-Blast" href="archive/a-blast" style="background-image: url(archive/a-blast/thumb.jpg)"><img src="res/th.png"></a>
+<a title="BeatSaver Viewer" href="archive/beatsaver-viewer" style="background-image: url(archive/beatsaver-viewer/thumb.jpg)"><img src="res/th.png"></a>
+<a title="Nightsky" href="archive/nightsky" style="background-image: url(archive/nightsky/thumb.jpg)"><img src="res/th.png"></a>
+<a title="Super Says" href="archive/supersays" style="background-image: url(archive/supersays/thumb.jpg)"><img src="res/th.png"></a>
+
+      </div>
+
+
+      <script type="text/javascript">
+        var thumbs = document.querySelectorAll('#projects a');
+        for (var i = 0; i < thumbs.length; i++) {
+          var label = document.createElement('span');
+          label.className = 'label';
+          label.innerHTML = thumbs[i].title;
+          thumbs[i].prepend(label);
+        }
+      </script>
+    </div>
+    <footer></footer>
+  </div>
+</body>
+
+</html>

@@ -1,22 +1,25 @@
 @font-face {
-    font-family: "Signika";
-    src: url("res/Signika-Light.ttf");
-    font-weight: 100;
+  font-family: "Signika";
+  src: url("res/Signika-Light.ttf");
+  font-weight: 100;
 }
+
 @font-face {
-    font-family: "Signika";
-    src: url("res/Signika-Regular.ttf");
-    font-weight: 200;
+  font-family: "Signika";
+  src: url("res/Signika-Regular.ttf");
+  font-weight: 200;
 }
+
 @font-face {
-    font-family: "Signika";
-    src: url("res/Signika-SemiBold.ttf");
-    font-weight: 400;
+  font-family: "Signika";
+  src: url("res/Signika-SemiBold.ttf");
+  font-weight: 400;
 }
+
 @font-face {
-    font-family: "Signika";
-    src: url("res/Signika-Bold.ttf");
-    font-weight: 800;
+  font-family: "Signika";
+  src: url("res/Signika-Bold.ttf");
+  font-weight: 800;
 }
 
 :root {
@@ -32,13 +35,14 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-body{
+body {
   background: var(--bg);
   font: 18px 'Signika', sans-serif;
   font-weight: 100;
@@ -46,125 +50,190 @@ body{
   line-height: 1.5rem;
 }
 
-::-moz-selection { background: var(--fg); color: var(--bg); }
-::selection { background: var(--fg); color: var(--bg); }
+::-moz-selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
 
 img {
   vertical-align: top;
   -ms-interpolation-mode: bicubic;
 }
 
-a{
+a {
   text-decoration: none;
   border-bottom: 1px solid var(--fg);
-  transition: border-bottom-width 100ms, color 100ms;
+  transition: border-bottom-width 150ms, color 100ms;
   color: var(--fg);
   font-weight: 200;
 }
 
-a:hover{
+a:hover {
   border-bottom: 2px solid var(--fg2);
   color: var(--fg2);
 }
 
-#all{
+#all {
   width: 1000px;
   margin: 0 auto;
 }
-#main{
+
+#main {
   width: 100%;
 }
 
-header{
+header {
   background-image: url(res/top.jpg);
   height: 10px;
   display: block;
 }
 
-footer{
-  background-image: url(res/bottom.jpg);
+footer {
+  /* background-image: url(res/bottom.jpg); */
   height: 37px;
   display: block;
   margin-top: 5rem;
 }
 
-b{
+b {
   font-weight: 800;
 }
 
-h1, nav{
+h1,
+nav {
   text-align: center;
-  margin: 30px 0;
+  margin: 35px 0;
 }
 
-h1{
-  margin-top: 55px;
+h1 {
+  margin: 0;
+  font-size: 40px;
+  margin-top: 65px;
   line-height: 3rem;
 }
 
-h3{
+h1>span {
+  display: block;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 30px;
+  font-size: 22px;
+  font-weight: 200;
+  color: var(--fg2);
+
+}
+
+h3 {
   font-size: 20px;
   font-weight: 800;
   margin-top: 50px;
 }
 
-nav{
+
+nav {
+  margin: 0 auto;
   margin-bottom: 55px;
+
+  display: flex;
+  max-width: 400px;
 }
 
-nav>a{
-  border: none;
-  transition: border-bottom-width 100ms, color 100ms;
+nav>a {
+  border-bottom: 1px solid var(--bg);
+  transition: border-bottom 150ms, color 100ms;
+  flex: 1 0 auto;
+  display: inline-block;
+  height: 30px
 }
-nav>a:hover{
-  border-bottom: 2px solid var(--fg2);
+
+nav>a:hover {
+  border-bottom: 3px solid var(--fg2);
   color: var(--fg2);
 }
 
-nav>a.active{
+nav>a.active {
   font-weight: 800;
 }
 
-#summary{
+#summary {
   text-align: center;
   margin: 40px auto;
 }
 
-#summary nav a{
+#summary nav a {
   font-weight: 400;
 }
 
-#aboutme{
-  width: 430px;
-  margin: 0 auto;
+#aboutme {
+  width: 573px;
+  margin: 4rem auto;
 }
 
-ul{
-  padding: 0 1rem;
+.shinybutton {
+  background-color: #1C8198;
+  padding: 13px 20px;
+  margin: 20px;
+  border-radius: 15px;
+  color: #fff;
+  border: none;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  line-height: 19px;
+
+  background-image: url('res/shine.png');
+  background-repeat: no-repeat;
+  background-size: 300% 50px;
+  background-position-x: 0px;
+  transition: background-position-x 200ms, transform 100ms;
+  display: inline-block;
 }
 
-li{
+.shinybutton a {
+  color: #fff;
+  border: none;
+}
+
+.shinybutton:hover {
+  color: white;
+  border: none;
+  background-position-x: 100%;
+  transform: scale(1.03);
+}
+
+ul {
+  /* padding: 0 1rem; */
+}
+
+li {
   margin-bottom: 0.5rem;
 }
 
-#contact{
-  list-style: none;
+#contact {
+  display: flex;
+  gap: 20px;
+  margin: 70px 0;
 }
-#contact li{
-  margin-bottom: 0.8rem;
+
+#contact span {
+  flex: 1 0 auto;
 }
-.linkicon{
+
+.linkicon {
   margin-right: 12px;
 }
 
-#projects{
+#projects {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   margin: 0 auto;
 }
 
-#projects a{
+#projects a {
   flex: 0 0 auto;
   padding: 15px;
   border: none;
@@ -177,57 +246,64 @@ li{
   background-clip: content-box;
 }
 
-#projects a img{
+#projects.big-thumbs a {
+  width: calc(100% / 2);
+}
+
+#projects a img {
   width: 100%;
 }
 
-#projects a:hover{
+#projects a:hover {
   transform: translate(3px, 0);
 }
 
-#projects a .label{
+#projects a .label {
   position: absolute;
   background: var(--fg);
   color: var(--bg);
   padding: 0.5rem 1rem;
   bottom: 15px;
   opacity: 0;
+  transition: opacity 60ms;
 }
 
-#projects a:hover .label{
+#projects a:hover .label {
   opacity: 1;
 }
 
-.center{
+.center {
   text-align: center;
   margin: 2rem 0;
 }
 
-#project img{
+#project img {
   width: 100%;
   margin: 15px 0;
 }
 
-#project .w66{
+#project .w66 {
   width: 66%;
   display: inline-block;
 }
 
-#project .w50{
+#project .w50 {
   width: 49%;
   display: inline-block;
 }
-#project .w33{
+
+#project .w33 {
   width: 32.5%;
   display: inline-block;
 }
-#project .w25{
+
+#project .w25 {
   width: 24%;
   display: inline-block;
 }
 
 
-.youtube{
+.youtube {
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -235,14 +311,14 @@ li{
   padding-top: 56.25%;
 }
 
-.vimeo{
+.vimeo {
   position: relative;
   overflow: hidden;
   width: 100%;
   margin: 15px 0;
 }
 
-.youtube iframe{
+.youtube iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -261,13 +337,13 @@ a[target]:after{
 */
 
 
-dl{
+dl {
   display: inline;
   font-weight: 100;
   margin-left: 1rem;
 }
 
-dt{
+dt {
   display: inline;
   font-size: 1rem;
   background: var(--bg2);
@@ -277,46 +353,52 @@ dt{
 }
 
 @media only screen and (max-width: 1000px) {
-  #all, #aboutme{
+
+  #all,
+  #aboutme {
     width: 100%;
   }
 
-  #main{
+  #main {
     padding: 0 2%;
   }
 
-  #projects a{
+  #projects a {
     width: calc(100% / 2);
     padding: 1%;
   }
 
-  #projects a .label{
+  #projects a .label {
     bottom: 0.5rem;
   }
 
-  #project img{
+  #project img {
     margin: 1% 0;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  #projects a{
+  #projects a {
     width: 100%;
     padding: 1% 0;
   }
-  #projects a .label{
+
+  #projects a .label {
     bottom: 5px;
   }
 
-  h1{
+  h1 {
     font-size: 2.5rem;
   }
 
-  video{
+  video {
     width: 100%;
   }
 
-  #project .w66, #project .w50, #project .w33, #project .w25{
+  #project .w66,
+  #project .w50,
+  #project .w33,
+  #project .w25 {
     width: 100%;
   }
 }

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176592956-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'UA-176592956-1');
@@ -15,51 +16,46 @@
 
   <meta charset="utf-8">
   <title>Diego F. Goberna - Portfolio</title>
-   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
-<div id="all">
+  <div id="all">
 
-  <header></header>
-  <div id="main">
-    <h1>DIEGO F. GOBERNA</h1>
-    <nav>
-      <a href="about.html">About me</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="projects.html" class="active">Projects</a>
-    </nav>
+    <header></header>
+    <div id="main">
+      <h1>DIEGO F. GOBERNA
+        <span>Technical Artist & Creative Developer</span>
+      </h1>
+      <nav>
+        <a href="/projects.html" class="active">Selected Works</a>
+        <a href="/about.html">About me</a>
+        <a href="/lab.html">Lab</a>
+        <a href="/archive.html">Archive</a>
+      </nav>
 
 
-    <div id="projects">
-      <a title="Moonrider" href="projects/moonrider" style="background-image: url(projects/moonrider/thumb.jpg)"><img src="res/th.png"></a>
-<a title="A-Painter" href="projects/a-painter" style="background-image: url(projects/a-painter/thumb.jpg)"><img src="res/th.png"></a>
+      <div id="projects" class="big-thumbs">
+        <a title="wim" href="projects/wim" style="background-image: url(projects/wim/thumb.jpg)"><img src="res/th.png"></a>
 <a title="Hello WebXR!" href="projects/hello-webxr" style="background-image: url(projects/hello-webxr/thumb.jpg)"><img src="res/th.png"></a>
+<a title="Moonrider" href="projects/moonrider" style="background-image: url(projects/moonrider/thumb.jpg)"><img src="res/th.png"></a>
 <a title="Supercraft" href="projects/supercraft" style="background-image: url(projects/supercraft/thumb.jpg)"><img src="res/th.png"></a>
-<a title="Blender Add-ons" href="projects/blender-addons" style="background-image: url(projects/blender-addons/thumb.jpg)"><img src="res/th.png"></a>
-<a title="Firefox Reality" href="projects/fxr" style="background-image: url(projects/fxr/thumb.jpg)"><img src="res/th.png"></a>
-<a title="Random Experiments" href="projects/random-experiments" style="background-image: url(projects/random-experiments/thumb.jpg)"><img src="res/th.png"></a>
-<a title="Tools" href="projects/tools" style="background-image: url(projects/tools/thumb.jpg)"><img src="res/th.png"></a>
-<a title="Pico8" href="projects/pico8" style="background-image: url(projects/pico8/thumb.jpg)"><img src="res/th.png"></a>
-<a title="A Saturday Night" href="projects/a-saturday-night" style="background-image: url(projects/a-saturday-night/thumb.jpg)"><img src="res/th.png"></a>
-<a title="Jumpy Balls" href="projects/jumpy-balls" style="background-image: url(projects/jumpy-balls/thumb.jpg)"><img src="res/th.png"></a>
-<a title="Foxr Run!" href="projects/foxr-run" style="background-image: url(projects/foxr-run/thumb.jpg)"><img src="res/th.png"></a>
-<a title="A-Blast" href="projects/a-blast" style="background-image: url(projects/a-blast/thumb.jpg)"><img src="res/th.png"></a>
-<a title="BeatSaver Viewer" href="projects/beatsaver-viewer" style="background-image: url(projects/beatsaver-viewer/thumb.jpg)"><img src="res/th.png"></a>
-<a title="Nightsky" href="projects/nightsky" style="background-image: url(projects/nightsky/thumb.jpg)"><img src="res/th.png"></a>
-<a title="Super Says" href="projects/supersays" style="background-image: url(projects/supersays/thumb.jpg)"><img src="res/th.png"></a>
 
+      </div>
+
+
+      <script type="text/javascript">
+        var thumbs = document.querySelectorAll('#projects a');
+        for (var i = 0; i < thumbs.length; i++) {
+          var label = document.createElement('span');
+          label.className = 'label';
+          label.innerHTML = thumbs[i].title;
+          thumbs[i].prepend(label);
+        }
+      </script>
     </div>
-
-
-    <script type="text/javascript">
-      var thumbs = document.querySelectorAll('#projects a');
-      for (var i = 0; i < thumbs.length; i++) {
-        var label = document.createElement('span');
-        label.className = 'label';
-        label.innerHTML = thumbs[i].title;
-        thumbs[i].prepend(label);
-      }
-    </script>
+    <footer></footer>
   </div>
-<footer></footer>
-</div>
 </body>
+
 </html>
