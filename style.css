@@ -23,6 +23,7 @@
 }
 
 :root {
+  --black: #222;
   --fg: #333;
   --fg2: #1C8198;
   --bg: #F2EFE6;
@@ -48,6 +49,7 @@ body {
   font-weight: 100;
   color: var(--fg);
   line-height: 1.5rem;
+  overflow-y: scroll;
 }
 
 ::-moz-selection {
@@ -79,25 +81,18 @@ a:hover {
 }
 
 #all {
-  width: 1000px;
+  max-width: 1600px;
   margin: 0 auto;
+  padding: 0 8%;
 }
 
 #main {
   width: 100%;
 }
 
-header {
-  background-image: url(res/top.jpg);
-  height: 10px;
-  display: block;
-}
-
 footer {
-  /* background-image: url(res/bottom.jpg); */
-  height: 37px;
-  display: block;
-  margin-top: 5rem;
+  margin-top: 30rem;
+  height: 1px;
 }
 
 b {
@@ -143,6 +138,15 @@ nav {
   max-width: 400px;
 }
 
+nav.disabled a {
+  color: gray !important;
+}
+
+nav.disabled>a:hover {
+  border-color: gray !important;
+}
+
+
 nav>a {
   border-bottom: 1px solid var(--bg);
   transition: border-bottom 150ms, color 100ms;
@@ -169,10 +173,6 @@ nav>a.active {
   font-weight: 400;
 }
 
-#aboutme {
-  width: 573px;
-  margin: 4rem auto;
-}
 
 .shinybutton {
   background-color: #1C8198;
@@ -222,20 +222,16 @@ li {
   flex: 1 0 auto;
 }
 
-.linkicon {
-  margin-right: 12px;
-}
-
-#projects {
+#thumnail_gallery {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   margin: 0 auto;
 }
 
-#projects a {
+#thumnail_gallery a {
   flex: 0 0 auto;
-  padding: 15px;
+  padding: 35px;
   border: none;
   transition: transform 100ms;
   width: calc(100% / 3);
@@ -243,65 +239,77 @@ li {
   background-repeat: no-repeat;
   background-origin: content-box;
   background-position: center;
+  border-radius: 20px;
   background-clip: content-box;
 }
 
-#projects.big-thumbs a {
+#thumnail_gallery.big-thumbs a {
   width: calc(100% / 2);
 }
 
-#projects a img {
+#thumnail_gallery a img {
   width: 100%;
 }
 
-#projects a:hover {
+#thumnail_gallery a:hover {
   transform: translate(3px, 0);
 }
 
-#projects a .label {
-  position: absolute;
-  background: var(--fg);
-  color: var(--bg);
-  padding: 0.5rem 1rem;
-  bottom: 15px;
-  opacity: 0;
-  transition: opacity 60ms;
+#thumnail_gallery a h3 {
+  margin: 0;
+  /* color: var(--fg2); */
+  margin-bottom: 0.5rem;
+  font-size: 1.6rem;
 }
 
-#projects a:hover .label {
-  opacity: 1;
+#thumnail_gallery a h4 {
+  margin: 0;
+  color: #555;
+  font-weight: 200;
+  font-size: 1.1rem;
 }
+
 
 .center {
   text-align: center;
   margin: 2rem 0;
 }
 
-#project img {
+#content img {
   width: 100%;
   margin: 15px 0;
 }
 
-#project .w66 {
+#content .w66 {
   width: 66%;
   display: inline-block;
 }
 
-#project .w50 {
+#content .w50 {
   width: 49%;
   display: inline-block;
 }
 
-#project .w33 {
+#content .w33 {
   width: 32.5%;
   display: inline-block;
 }
 
-#project .w25 {
+#content .w25 {
   width: 24%;
   display: inline-block;
 }
 
+
+#aboutme {
+  width: 573px;
+  margin: 4rem auto;
+}
+
+#aboutme img {
+  width: auto;
+  margin: 0 7px 0 0;
+}
 
 .youtube {
   position: relative;
@@ -338,9 +346,9 @@ a[target]:after{
 
 
 dl {
-  display: inline;
+  display: block;
   font-weight: 100;
-  margin-left: 1rem;
+  margin-bottom: 2rem;
 }
 
 dt {
@@ -348,9 +356,36 @@ dt {
   font-size: 1rem;
   background: var(--bg2);
   padding: 0.1rem 0.5rem;
-  margin-right: 0.6rem;
+  margin-right: 0.3rem;
   border-radius: 0.4rem;
 }
+
+.transition {
+  animation: fadeInOutAnimation 400ms ease-out;
+}
+
+@keyframes fadeInOutAnimation {
+  0% {
+    opacity: 1;
+    margin-left: 0;
+  }
+
+  20% {
+    opacity: 0;
+    margin-left: 20px;
+  }
+
+  25% {
+    opacity: 0;
+    margin-left: -20px;
+  }
+
+  100% {
+    opacity: 1;
+    margin-left: 0px;
+  }
+}
+
 
 @media only screen and (max-width: 1000px) {
 
@@ -363,14 +398,11 @@ dt {
     padding: 0 2%;
   }
 
-  #projects a {
+  #thumnail_gallery a {
     width: calc(100% / 2);
     padding: 1%;
   }
 
-  #projects a .label {
-    bottom: 0.5rem;
-  }
 
   #project img {
     margin: 1% 0;
@@ -378,13 +410,9 @@ dt {
 }
 
 @media only screen and (max-width: 600px) {
-  #projects a {
+  #thumnail_gallery a {
     width: 100%;
     padding: 1% 0;
-  }
-
-  #projects a .label {
-    bottom: 5px;
   }
 
   h1 {
