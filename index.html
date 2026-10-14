@@ -16,9 +16,20 @@
     <meta charset="utf-8">
     <title>Diego F. Goberna - Portfolio</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="/res/hash-router.min.js"></script>
+
+    <script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@v0.186.1/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.186.1/examples/jsm/"
+  }
+}
+</script>
 </head>
 
 <body>
+    <canvas id="scene3d"></canvas>
     <div id="all">
         <header></header>
 
@@ -27,29 +38,25 @@
                 <span>Technical Artist & Creative Developer</span>
             </h1>
             <nav>
-                <a href="#" data-section="projects" onclick="load_page(event, 'projects')">Selected Works</a>
-                <a href="#" data-section="about" onclick="load_page(event, 'about')">About me</a>
-                <a href="#" data-section="lab" onclick="load_page(event, 'lab')">Lab</a>
-                <a href="#" data-section="archive" onclick="load_page(event, 'archive')">Archive</a>
+                <a href="index.html#/projects" data-section="projects">Selected Works</a>
+                <a href="index.html#/about" data-section="about">About me</a>
+                <a href="index.html#/lab" data-section="lab">Lab</a>
+                <a href="index.html#/archive" data-section="archive">Archive</a>
             </nav>
 
             <div id="content">
             </div>
         </div>
-        <footer></footer>
+        <!-- <footer></footer> -->
     </div>
 </body>
 
 
 <script>
     let loading = false;
-    let page_history = [''];
 
-    function load_page(ev, page, going_back) {
-        if (page !== undefined) ev.preventDefault(); else page = ev;
-
+    function load_page(page) {
         if (page[0] == '#') page = page.substr(1);
-
         const section = page.split('/')[0];
 
         if (loading) return;
@@ -57,10 +64,6 @@
         // document.querySelector('nav').classList.add("disabled");
         set_menu_section(section);
 
-        if (going_back !== true) {
-            page_history.push(window.location.hash);
-            handleForwardNavigation();
-        }
         if (section === '') {
             // go home
             document.getElementById('content').innerHTML = '';
@@ -71,19 +74,23 @@
                 const div = document.getElementById('content');
                 div.classList.add("transition");
                 setTimeout(() => {
-                    div.innerHTML = html;
+                    let close_button = '';
+                    const sections = page.split('/');
+                    if (sections.length > 1) {
+                        close_button = '<a href="index.html#/' + sections[0] + '" class="close_button">&times;</a>';
+                    }
+                    div.innerHTML = close_button + html + close_button;
                 }, 92);
                 setTimeout(() => {
                     div.classList.remove("transition");
                     loading = false;
-                    window.location.hash = page;
                     // document.querySelector('nav').classList.remove("disabled");
                 }, 400);
             })
             .catch(error => {
                 loading = false;
                 console.error('Failed to fetch ' + page + ': ', error);
-                document.querySelector('nav').classList.remove("disabled");
+                // document.querySelector('nav').classList.remove("disabled");
             });
     }
 
@@ -92,37 +99,61 @@
         for (let i = 0; i < items.length; i++) {
             items[i].classList.toggle('active', items[i].dataset.section == section);
         }
-
     }
 
-    function handleForwardNavigation() {
-        sessionStorage.setItem('go_forward', 'true');
-    }
-
-    function init() {
-        window.addEventListener('popstate', (event) => {
-            event.preventDefault();
-            const isForward = sessionStorage.getItem('go_forward');
-            if (isForward !== 'true') {
-                const url = page_history.pop();
-                if (url !== undefined) {
-                    load_page(event, url, true);
-                }
-            }
-            sessionStorage.removeItem('go_forward');
-        });
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        init();
-        if (location.hash.length > 0) {
-            load_page(location.hash);
-        }
-        // DEV
-        else {
-            load_page('projects')
+    Router.add({
+        path: '#/', on: function () {
+            load_page('');
         }
     });
+
+    Router.add({
+        path: '#/projects', on: function () {
+            load_page('projects');
+        }
+    });
+
+
+    Router.add({
+        path: '#/projects/:proj', on: function () {
+            load_page('projects/' + this.params.proj);
+        }
+    });
+
+    Router.add({
+        path: '#/about', on: function () {
+            load_page('about');
+        }
+    });
+
+    Router.add({
+        path: '#/lab', on: function () {
+            load_page('lab');
+        }
+    });
+
+    Router.add({
+        path: '#/lab/:proj', on: function () {
+            load_page('lab/' + this.params.proj);
+        }
+    });
+
+
+    Router.add({
+        path: '#/archive', on: function () {
+            load_page('archive');
+        }
+    });
+
+    Router.add({
+        path: '#/archive/:proj', on: function () {
+            load_page('archive/' + this.params.proj);
+        }
+    });
+
+
+    Router.init();
 </script>
+<!-- <script type="module" src="main.js"></script> -->
 
 </html>
