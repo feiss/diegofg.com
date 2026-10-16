@@ -323,6 +323,11 @@ li {
   border-radius: 5px;
 }
 
+#content .w75 {
+  width: 75%;
+  display: inline-block;
+}
+
 #content .w66 {
   width: 66%;
   display: inline-block;

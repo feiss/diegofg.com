@@ -1,0 +1,40 @@
+<h2>Code Golfing in JS1K</h2>
+<dl>
+    <dt>Javascript</dt>
+</dl>
+
+<p>The goal in the <a href="https://js1k.com" target="_blank">JS1K</a> Javascript competition
+    was to make a demo using only <b>1023 bytes</b> of Javascript code. As you can imagine, one has to be
+    very creative both in the idea and the implementation.</p>
+
+<h3>Crazy multiplayer 2-sided pong</h3>
+
+<a href="https://js1k.com/2010-first/demo/41">Demo</a> |
+<a href="https://js1k.com/2010-first/details/41">Submission info</a>
+<p>It is a spinning, 4-sided pong for two players (mouse and a,z keys), featuring effects, ball collisions and scoreboard. Also, the speed of the ball increased during
+    the round.</p>
+
+<video src="lab/js1k/js1k_pong.mp4" width="100%" controls="" autoplay="" muted=""></video>
+
+
+<h3>PAC-MAN</h3>
+<a href="https://js1k.com/2019-x/demo/4122">Demo</a> |
+<a href="https://js1k.com/2019-x/details/4122">Submission info</a>
+
+<p>
+    I wanted to preserve original Pac-Man map layout and gameplay feeling, which took too much space and
+    got short of bytes for implementing the "power pellets" to eat the ghosts.
+</p>
+<p>Ghost AI is obviously simple, and basically non-existent: a "pseudorandom" turn is picked from previous turn plus a counter.</p>
+<video src="lab/js1k/js1k_pacman.mp4" width="100%" controls="" autoplay="" muted=""></video>
+
+<h3>Fluid solver (1872 Bytes)</h3>
+
+<p>I tried to squeeze Jos Stam's "Real-Time Fluid Dynamics for Games" implementation for JS1K,
+    but I didn't manage to shrink it to 1024 Bytes without destroying it too
+    much. I had a lot of fun implementing the algorithm, but could not present it to the competition.</p>
+<p>(I didn't find the code yet, just these two screenshots..)</p>
+<p>
+    <img src="lab/js1k/jsfluid00.jpg" class="w33">
+    <img src="lab/js1k/jsfluid01.jpg" class="w33">
+</p>

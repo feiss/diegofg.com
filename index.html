@@ -153,6 +153,9 @@
 
 
     Router.init();
+    if (window.location.hash == '') {
+        Router.navigate("#/projects");
+    }
 </script>
 <!-- <script type="module" src="main.js"></script> -->
 
