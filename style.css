@@ -461,11 +461,20 @@ dt {
     margin: 1% 0;
   }
 }
+*/
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 768px) {
+
+  #content,
+  #content.transition,
+  #content * {
+    animation: none !important;
+    transition: none !important;
+  }
+
   #thumnail_gallery a {
-    width: 100%;
-    padding: 1% 0;
+    width: 100% !important;
+    padding: 4% 0;
   }
 
   h1 {
@@ -476,10 +485,17 @@ dt {
     width: 100%;
   }
 
+  #project .w75,
   #project .w66,
   #project .w50,
   #project .w33,
   #project .w25 {
     width: 100%;
   }
-} */
+
+  #aboutme {
+    width: 100%;
+    margin: 0;
+
+  }
+}
