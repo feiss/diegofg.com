@@ -112,6 +112,11 @@ b {
   font-weight: 800;
 }
 
+em {
+  font-weight: 400;
+  font-style: normal;
+}
+
 h1,
 nav {
   text-align: center;
