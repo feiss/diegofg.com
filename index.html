@@ -1,1 +1,185 @@
-<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0;url=projects.html"/></head></html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176592956-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-176592956-1');
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Diego F. Goberna - Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="/res/hash-router.min.js"></script>
+    <!-- 
+    <script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@v0.186.1/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.186.1/examples/jsm/"
+  }
+}
+</script> -->
+</head>
+
+<body>
+    <canvas id="scene3d"></canvas>
+    <div id="all">
+        <header></header>
+
+        <div id="main">
+            <h1>DIEGO F. GOBERNA
+                <span>Technical Artist & Creative Developer</span>
+            </h1>
+            <nav>
+                <a href="index.html#/projects" data-section="projects">Selected Works</a>
+                <a href="index.html#/about" data-section="about">About me</a>
+                <a href="index.html#/archive" data-section="archive">Archive</a>
+                <a href="index.html#/lab" data-section="lab">Lab</a>
+            </nav>
+
+            <div id="content">
+            </div>
+        </div>
+        <!-- <footer></footer> -->
+    </div>
+</body>
+
+
+<script>
+
+    let requestId = 0;
+
+    async function load_page(page) {
+        if (page[0] === '#') page = page.substring(1);
+
+        const section = page.split('/')[0];
+        const currentRequest = ++requestId;
+        const div = document.getElementById('content');
+
+        set_menu_section(section);
+
+        if (section === '') {
+            div.innerHTML = '';
+            div.classList.remove('transition');
+            return;
+        }
+
+        try {
+            const response = await fetch(
+                `${page}/meta.html`,
+                { cache: 'no-cache' }
+            );
+
+            if (!response.ok) {
+                throw new Error(
+                    `HTTP ${response.status}: ${page}/meta.html`
+                );
+            }
+
+            const html = await response.text();
+
+            if (currentRequest !== requestId) return;
+
+            const sections = page.split('/');
+            let closeButton = '';
+
+            if (sections.length > 1) {
+                closeButton =
+                    `<a href="index.html#/${sections[0]}" ` +
+                    `class="close_button">&times;</a>`;
+            }
+
+            div.classList.add('transition');
+
+            setTimeout(() => {
+                if (currentRequest !== requestId) return;
+                div.innerHTML = closeButton + html + closeButton;
+            }, 92);
+
+            setTimeout(() => {
+                if (currentRequest !== requestId) return;
+                div.classList.remove('transition');
+            }, 400);
+
+        } catch (error) {
+            if (currentRequest !== requestId) return;
+            console.error('Failed to load section:', error);
+            div.innerHTML = '<p>Unable to load this section. Please try again.</p>';
+            div.classList.remove('transition');
+        }
+    }
+
+
+    function set_menu_section(section) {
+        const items = document.querySelectorAll('nav a');
+        for (let i = 0; i < items.length; i++) {
+            items[i].classList.toggle('active', items[i].dataset.section == section);
+        }
+    }
+
+    Router.add({
+        path: '#/', on: function () {
+            load_page('');
+        }
+    });
+
+    Router.add({
+        path: '#/projects', on: function () {
+            load_page('projects');
+        }
+    });
+
+
+    Router.add({
+        path: '#/projects/:proj', on: function () {
+            load_page('projects/' + this.params.proj);
+        }
+    });
+
+    Router.add({
+        path: '#/about', on: function () {
+            load_page('about');
+        }
+    });
+
+    Router.add({
+        path: '#/lab', on: function () {
+            load_page('lab');
+        }
+    });
+
+    Router.add({
+        path: '#/lab/:proj', on: function () {
+            load_page('lab/' + this.params.proj);
+        }
+    });
+
+
+    Router.add({
+        path: '#/archive', on: function () {
+            load_page('archive');
+        }
+    });
+
+    Router.add({
+        path: '#/archive/:proj', on: function () {
+            load_page('archive/' + this.params.proj);
+        }
+    });
+
+
+    Router.init();
+    if (window.location.hash == '') {
+        Router.navigate("#/projects");
+    }
+</script>
+<!-- <script type="module" src="main.js"></script> -->
+
+</html>

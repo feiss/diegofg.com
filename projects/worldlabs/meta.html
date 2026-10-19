@@ -1,0 +1,65 @@
+<h2>Gaussian Splats</h2>
+<dl>
+    <dt>Javascript</dt>
+    <dt>Three.js</dt>
+    <dt>Spark.js</dt>
+    <dt>Colmap</dt>
+    <dt>Postshot</dt>
+    <dt>Blender</dt>
+</dl>
+
+<p>This was my first deep dive into Gaussian Splats, working for <a href="http://worldlabs.ai" target="_blank">World Labs</a>. My task was to improve some of the existing
+    examples of their popular <a href="http://sparjs.dev" target="_blank">Spark.js</a> library and create new ones. The focus was not to make outstanding and complicated
+    scenes, but very simple ones, with clear and easy to read code that people can learn from.</p>
+
+<p>I used many tools available at the moment for creating and training splats, the best for me were <a href="https://colmap.github.io/" target="_blank">Colmap</a> and <a
+        href="https://www.jawset.com/" target="_blank">Jawset Postshot</a>.</p>
+
+<p>Specifically, I:
+<ul>
+    <li>created gaussian splats both from <b>different sources</b>: real life photos and videos, synthetic objects made in Blender, and AI generated meshes</li>
+    <li>created scripts and a <b>Blender Add-on</b> for speeding up the pipeline</li>
+    <li>designed the <b>Spark logo</b> and its <a href="https://sparkjs.dev/viewer/" target="">Viewer</a></li>
+</ul>
+</p>
+
+<p>
+    <img src="archive/worldlabs/worldlabs_bear.jpg">
+    My daughter's bear
+</p>
+
+<p>
+    <img src="archive/worldlabs/worldlabs_butterfly.jpg">
+    Synthetic butterfly made in Blender
+</p>
+<img src="archive/worldlabs/worldlabs_butterfly_closeup.jpg">
+
+
+<p>For speeding up the pipeline, the <b>Blender Add-on</b> helps creating & updating cameras from a guide mesh, and render using all of them.</p>
+
+<img src="archive/worldlabs/worldlabs_addon.jpg">
+
+
+<p>
+    <img src="archive/worldlabs/worldlabs_logo.jpg">
+    World Labs logo, made in Blender
+</p>
+<p>
+    <img src="archive/worldlabs/worldlabs_cat.jpg">
+    Little statue we have at home
+</p>
+
+
+<p><img src="archive/worldlabs/worldlabs_restaurant.jpg">
+    An interactive example to switch through <a href="https://superspl.at/user/tipatat" target="">Tipatat</a>'s splats
+</p>
+<p>
+    <img src="archive/worldlabs/worldlabs_forge.jpg">
+    Anvil model from Sketchfab, fire and sparks made in Blender. In the next image you can see the array of cameras used to triangulate and train the model.
+</p>
+<img src="archive/worldlabs/worldlabs_forge_blender.jpg">
+
+<p>
+    <img src="archive/worldlabs/worldlabs_robot.jpg">
+    I also tested models created with AI, like this one.
+</p>

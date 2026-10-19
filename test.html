@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <script src="res/hash-router.min.js"></script>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            margin: 1rem;
+        }
+
+        nav a {
+            margin: 1rem;
+
+        }
+
+        #main {
+            font-size: 30px;
+        }
+
+        #scene3d {
+            background: #ccc;
+            position: absolute;
+            z-index: -1;
+        }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@v0.186.1/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.186.1/examples/jsm/"
+  }
+}
+</script>
+</head>
+
+<body>
+    <canvas id="scene3d"></canvas>
+    <nav>
+        <a href="test.html#/">main</a>
+        <a href="test.html#/projects">projects</a>
+        <a href="test.html#/projects/eof">projects/eof</a>
+        <a href="test.html#/projects/wim">projects/wim</a>
+        <a href="test.html#/lab">lab</a>
+        <a href="test.html#/about">about</a>
+    </nav>
+    <div id="main"></div>
+    <script>
+        const main = document.getElementById('main');
+        Router.add({
+            path: '#/',
+            on: () => {
+                main.innerHTML = "main"
+                console.log("on main");
+            }
+        });
+        Router.add({
+            path: '#/projects',
+            on: () => {
+                main.innerHTML = "Projects"
+                console.log("on projects");
+            }
+        });
+        Router.add({
+            path: '#/projects/:proj',
+            on: function () {
+                main.innerHTML = "Projects " + this.params.proj;
+                console.log("on projects " + this.params.proj);
+            }
+        });
+
+        Router.add({
+            path: '#/lab',
+            on: () => {
+                main.innerHTML = "lab"
+                console.log("on lab");
+            }
+        });
+
+        Router.add({
+            path: '#/about',
+            on: () => {
+                main.innerHTML = "about"
+                console.log("on about");
+            }
+        });
+        Router.init();
+
+
+    </script>
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>
